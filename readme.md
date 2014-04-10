@@ -1,5 +1,7 @@
 # Skinner
 
+[![Build Status](https://travis-ci.org/MCProHosting/skinner.svg)](https://travis-ci.org/MCProHosting/skinner)
+
 Skinner is a fairly simple library to grab Minecraft heads and skins for your application.
 
 ## Installation
