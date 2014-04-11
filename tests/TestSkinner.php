@@ -41,7 +41,7 @@ class MinotarCacheAdapterTest extends PHPUnit_Framework_TestCase
 
     public function testCropsHead()
     {
-        $m = Mockery::mock('\Intervention\Image');
+        $m = Mockery::mock('\Intervention\Image\Image');
         $m->shouldReceive('crop')->with(8, 8, 8, 8)->andReturn('bar');
         $m->shouldReceive('backup')->andReturn(Mockery::self());
 
@@ -73,7 +73,7 @@ class MinotarCacheAdapterTest extends PHPUnit_Framework_TestCase
 
     public function testEncodes()
     {
-        $m = Mockery::mock('\Intervention\Image');
+        $m = Mockery::mock('\Intervention\Image\Image');
         $m->shouldReceive('encode')->with('foo', 42)->andReturn('bar');
         $fetcher = Mockery::mock('\Mcprohosting\Skinner\Fetcher');
         $provider = Mockery::mock('\Mcprohosting\Skinner\ImageProvider');
@@ -85,7 +85,7 @@ class MinotarCacheAdapterTest extends PHPUnit_Framework_TestCase
 
     public function testEncodesOnString()
     {
-        $m = Mockery::mock('\Intervention\Image');
+        $m = Mockery::mock('\Intervention\Image\Image');
         $m->shouldReceive('encode')->andReturn('bar');
         $fetcher = Mockery::mock('\Mcprohosting\Skinner\Fetcher');
         $provider = Mockery::mock('\Mcprohosting\Skinner\ImageProvider');
@@ -97,7 +97,7 @@ class MinotarCacheAdapterTest extends PHPUnit_Framework_TestCase
 
     public function testPassesCallsToImage()
     {
-        $m = Mockery::mock('\Intervention\Image');
+        $m = Mockery::mock('\Intervention\Image\Image');
         $m->shouldReceive('foo')->with('argument')->andReturn('bar');
         $fetcher = Mockery::mock('\Mcprohosting\Skinner\Fetcher');
         $provider = Mockery::mock('\Mcprohosting\Skinner\ImageProvider');
@@ -110,7 +110,7 @@ class MinotarCacheAdapterTest extends PHPUnit_Framework_TestCase
     public function testImageProvider()
     {
         $provider = new ImageProvider;
-        $this->assertInstanceOf('\Intervention\Image', $provider->make(null));
+        $this->assertInstanceOf('\Intervention\Image\Image', $provider->make(null));
     }
 
     public function testFetcher()
