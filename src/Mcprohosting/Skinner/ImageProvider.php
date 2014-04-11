@@ -1,6 +1,6 @@
 <?php namespace Mcprohosting\Skinner;
 
-use Intervention\Image;
+use Intervention\Image\Image;
 
 class ImageProvider
 {
