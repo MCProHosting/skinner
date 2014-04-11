@@ -16,4 +16,15 @@ class Skinner {
 
 		return new Skin($username, new Fetcher, new ImageProvider);
 	}
+
+	/**
+	 * Dynamic proxy for the user(), so that Skinner may be used in DI.
+	 * @param  string $username 
+	 * @return Skin
+	 * @throws InvalidUsernameException
+	 */
+	public function make($username)
+	{
+		self::user($username);
+	}
 }

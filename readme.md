@@ -34,7 +34,4 @@ file_put_contents('steve_skin.png', $user->skin()->resize(300, 300));
 
 $user = Skinner::user('steve');
 file_put_contents('steve_skin.jpg', $user->encode('jpg', 70));
-
-// !! WARNING !! that the image on the user is persisted. So, calling head(), which
-// causes the skin to be cropped, then calling skin(), will return the head!
 ```

@@ -53,11 +53,12 @@ class Skin {
     public function skin()
     {
         if ($this->data) {
-            return $this->data;
+            $this->data = $this->data->reset();
+            return $this;
         }
         
         $contents = $this->fetcher->download($this->username);
-        $this->data = $this->provider->make($contents);
+        $this->data = $this->provider->make($contents)->backup();
 
         return $this;
     }
