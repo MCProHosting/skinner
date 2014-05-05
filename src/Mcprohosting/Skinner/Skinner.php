@@ -25,7 +25,7 @@ class Skinner {
 	 */
 	public function make($username)
 	{
-		self::user($username);
+		return self::user($username);
 	}
 
     /** 
