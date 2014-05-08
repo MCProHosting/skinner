@@ -13,8 +13,10 @@ class Skinner {
 		if (!preg_match('/^[A-z0-9_-]+$/', $username)) {
 			throw new Exceptions\InvalidUsernameException();
 		}
+		
+		$udata = self::getUserData($username);
 
-		return new Skin(self::getUserData($username)['name'], new Fetcher, new ImageProvider);
+		return new Skin($udata ? $udata['name'] : $username, new Fetcher, new ImageProvider);
 	}
 
 	/**
@@ -41,6 +43,7 @@ class Skinner {
 	        curl_setopt($ch, CURLOPT_CUSTOMREQUEST, "POST");                                                                     
 	        curl_setopt($ch, CURLOPT_POSTFIELDS, $data_string);                                                                  
 	        curl_setopt($ch, CURLOPT_RETURNTRANSFER, true);                                                                      
+	        curl_setopt($ch, CURLOPT_SSL_VERIFYPEER, false);                                                                      
 	        curl_setopt($ch, CURLOPT_HTTPHEADER, array(                                                                          
 	            'Content-Type: application/json',                                                                                
 	            'Content-Length: ' . strlen($data_string))                                                                       
