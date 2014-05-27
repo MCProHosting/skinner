@@ -38,7 +38,8 @@ class Fetcher
 
         if (curl_getinfo($ch, CURLINFO_HTTP_CODE) != self::CODE_OKAY) {
             curl_close($ch);
-            throw new Exceptions\FailedToGetSkinException();
+            
+            throw new Exceptions\FailedToGetSkinException('Failed to get skin for ' . $username . ', error: ' . curl_getinfo($ch, CURLINFO_HTTP_CODE));
         }
 
         curl_close($ch);
