@@ -54,7 +54,7 @@ class Skinner {
 			} else {
 				$jsonObject = json_decode($result, true);
 				
-				if (json_last_error() !== JSON_ERROR_NONE) {
+				if (json_last_error() !== JSON_ERROR_NONE && count($jsonObject)) {
 					return array("id" => "null", "name" => "steve");
 				}
 
