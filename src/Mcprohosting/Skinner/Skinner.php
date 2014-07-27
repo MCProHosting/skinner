@@ -49,18 +49,13 @@ class Skinner {
 				'Content-Length: ' . strlen($data_string))                                                                       
 			);                                                                                                                   
 			$result = curl_exec($ch);
-			if ($result == "[]") {
-				$userObject = array("id" => "null", "name" => "steve");
-			} else {
-				$jsonObject = json_decode($result, true);
-				
-				if (json_last_error() !== JSON_ERROR_NONE && count($jsonObject)) {
-					return array("id" => "null", "name" => "steve");
-				}
-
-				$userObject = $jsonObject[0];
+			$jsonObject = json_decode($result, true);
+			
+			if (json_last_error() == JSON_ERROR_NONE && count($jsonObject)) {
+				return $jsonObject[0];
 			}
 
-			return $userObject;
+			return array("id" => null, "name" => "steve");
+			
 	}
 }
