@@ -6,7 +6,7 @@ class Fetcher
     /**
      * URL to get Minecraft skins from
      */
-    const BASE_URL = 'http://s3.amazonaws.com/MinecraftSkins/%s.png';
+    const BASE_URL = 'http://skins.minecraft.net/MinecraftSkins/%s.png';
 
     /**
      * Response code required to say "okay" on the image
