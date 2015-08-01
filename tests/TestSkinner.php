@@ -14,7 +14,7 @@ class MinotarCacheAdapterTest extends PHPUnit_Framework_TestCase
 
     public function testSkinnerProvidesSkin()
     {
-        $skin = Skinner::user('connor4312');
+        $skin = Skinner::user('notch');
 
         $this->assertInstanceOf('\Mcprohosting\Skinner\Skin', $skin);
     }
@@ -32,10 +32,10 @@ class MinotarCacheAdapterTest extends PHPUnit_Framework_TestCase
         $imagemock = Mockery::mock('Image');
 
         $imagemock->shouldReceive('backup');
-        $fetcher->shouldReceive('download')->with('connor4312')->andReturn('foo');
+        $fetcher->shouldReceive('download')->with('notch')->andReturn('foo');
         $provider->shouldReceive('make')->with('foo')->andReturn($imagemock);
 
-        $skin = (new Skin('connor4312', $fetcher, $provider))->skin();
+        $skin = (new Skin('notch', $fetcher, $provider))->skin();
         $this->assertInstanceOf('Image', $imagemock);
     }
 
@@ -48,10 +48,10 @@ class MinotarCacheAdapterTest extends PHPUnit_Framework_TestCase
         $fetcher = Mockery::mock('\Mcprohosting\Skinner\Fetcher');
         $provider = Mockery::mock('\Mcprohosting\Skinner\ImageProvider');
 
-        $fetcher->shouldReceive('download')->with('connor4312')->andReturn('foo');
+        $fetcher->shouldReceive('download')->with('notch')->andReturn('foo');
         $provider->shouldReceive('make')->with('foo')->andReturn($m);
 
-        $skin = (new Skin('connor4312', $fetcher, $provider))->head();
+        $skin = (new Skin('notch', $fetcher, $provider))->head();
         $this->assertEquals('bar', $skin->data);
     }
 
@@ -64,10 +64,10 @@ class MinotarCacheAdapterTest extends PHPUnit_Framework_TestCase
         $imagemock->shouldReceive('backup')->andReturn(Mockery::self());
         $imagemock->shouldReceive('reset')->andReturn('bar');
 
-        $fetcher->shouldReceive('download')->with('connor4312')->andReturn('foo');
+        $fetcher->shouldReceive('download')->with('notch')->andReturn('foo');
         $provider->shouldReceive('make')->with('foo')->andReturn($imagemock);
 
-        $skin = (new Skin('connor4312', $fetcher, $provider))->skin()->skin();
+        $skin = (new Skin('notch', $fetcher, $provider))->skin()->skin();
         $this->assertEquals($skin->data, 'bar');
     }
 
@@ -78,7 +78,7 @@ class MinotarCacheAdapterTest extends PHPUnit_Framework_TestCase
         $fetcher = Mockery::mock('\Mcprohosting\Skinner\Fetcher');
         $provider = Mockery::mock('\Mcprohosting\Skinner\ImageProvider');
 
-        $skin = new Skin('connor4312', $fetcher, $provider);
+        $skin = new Skin('notch', $fetcher, $provider);
         $skin->data = $m;
         $this->assertEquals('bar', $skin->encode('foo', 42));
     }
@@ -90,7 +90,7 @@ class MinotarCacheAdapterTest extends PHPUnit_Framework_TestCase
         $fetcher = Mockery::mock('\Mcprohosting\Skinner\Fetcher');
         $provider = Mockery::mock('\Mcprohosting\Skinner\ImageProvider');
 
-        $skin = new Skin('connor4312', $fetcher, $provider);
+        $skin = new Skin('notch', $fetcher, $provider);
         $skin->data = $m;
         $this->assertEquals('bar', $skin->__toString());
     }
@@ -102,7 +102,7 @@ class MinotarCacheAdapterTest extends PHPUnit_Framework_TestCase
         $fetcher = Mockery::mock('\Mcprohosting\Skinner\Fetcher');
         $provider = Mockery::mock('\Mcprohosting\Skinner\ImageProvider');
 
-        $skin = new Skin('connor4312', $fetcher, $provider);
+        $skin = new Skin('notch', $fetcher, $provider);
         $skin->data = $m;
         $this->assertEquals('bar', $skin->foo('argument'));
     }
@@ -117,7 +117,7 @@ class MinotarCacheAdapterTest extends PHPUnit_Framework_TestCase
     {
         $fetcher = new Fetcher;
 
-        $out = $fetcher->download('connor431');
+        $out = $fetcher->download('notch');
         $this->assertTrue(!! $out);
     }
 }

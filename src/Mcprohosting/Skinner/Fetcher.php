@@ -30,6 +30,7 @@ class Fetcher
         curl_setopt($ch, CURLOPT_TIMEOUT, 5);
         curl_setopt($ch, CURLOPT_RETURNTRANSFER, true);
         curl_setopt($ch, CURLOPT_SSL_VERIFYPEER, false);
+        curl_setopt($ch, CURLOPT_FOLLOWLOCATION, true);
         $data = curl_exec($ch);
 
         if (curl_getinfo($ch, CURLINFO_HTTP_CODE) == self::CODE_NOTFOUND) {
@@ -41,7 +42,7 @@ class Fetcher
         }
 
         curl_close($ch);
-        
+
         return $data;
     }
 }
